@@ -99,7 +99,7 @@ fn get_namespace_lvgl(fname: &str) -> String {
     match namespace1 {
         "lv" => {  //  If function is `lv_namespace2_...`
             match namespace2 {
-                "anim" | "area" | "disp" | "font" | "color" | "event" | "indev" | "ll" | "mem" | "signal" | "style" | "task" | "tick" => 
+                "anim" | "area" | "disp" | "font" | "color" | "event" | "indev" | "ll" | "mem" | "signal" | "style" | "task" | "tick" | "widgets" => 
                     namespace1.to_string(),  //  If `lv_style_...`, return namespace `lv`
                 _ => format!("{}_{}", namespace1, namespace2)  //  Return namespace `lv_namespace2`
             }
