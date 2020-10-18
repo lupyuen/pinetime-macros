@@ -97,14 +97,8 @@ fn get_namespace_lvgl(fname: &str) -> String {
     let namespace2 = fname_split[1];
     //  Match the namespace and ignore if it's not a known namespace.
     match namespace1 {
-        "lv" => {  //  If function is `lv_namespace2_...`
-            match namespace2 {
-                "anim" | "area" | "disp" | "font" | "color" | "event" | "indev" | "ll" | "mem" | "signal" | "style" | "task" | "tick" | "widgets" => 
-                    namespace1.to_string(),  //  If `lv_style_...`, return namespace `lv`
-                _ => format!("{}_{}", namespace1, namespace2)  //  Return namespace `lv_namespace2`
-            }
-        }
-        _ => { "".to_string() }  //  Not a valid namspace
+        "lv" => format!("{}_{}", namespace1, namespace2),  //  If function is `lv_namespace2_...`, return namespace `lv_namespace2`
+        _    => "".to_string()                             //  Otherwise not a valid namspace
     }
 }
 
